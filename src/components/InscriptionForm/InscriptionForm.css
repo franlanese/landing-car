@@ -1,0 +1,106 @@
+.inscription-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  background: rgba(10, 10, 42, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 243, 255, 0.15);
+  border-radius: 24px;
+  padding: 2rem;
+  max-width: 560px;
+}
+
+.inscription-form-title {
+  font-size: 1.4rem;
+  color: var(--color-accent);
+}
+
+.inscription-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+@media (max-width: 480px) {
+  .inscription-form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.inscription-label {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.05em;
+}
+
+.inscription-input,
+.inscription-textarea {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  background: rgba(10, 10, 42, 0.6);
+  border: 1px solid rgba(0, 243, 255, 0.25);
+  border-radius: 10px;
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+}
+
+.inscription-input:focus,
+.inscription-textarea:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 12px var(--color-accent-glow);
+}
+
+.inscription-input:disabled {
+  color: var(--color-text-muted);
+  cursor: not-allowed;
+}
+
+.inscription-textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+.inscription-error {
+  color: #ff4d6d;
+  font-size: 0.9rem;
+}
+
+.inscription-submit {
+  background: transparent;
+  color: var(--color-accent);
+  border: 2px solid var(--color-accent);
+  padding: 0.9rem 2rem;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  font-family: var(--font-heading);
+  align-self: flex-start;
+}
+
+.inscription-submit:hover:not(:disabled) {
+  background: var(--color-accent);
+  color: var(--color-bg);
+  box-shadow: 0 0 20px var(--color-accent-glow);
+}
+
+.inscription-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.inscription-success {
+  background: rgba(10, 10, 42, 0.45);
+  border: 1px solid rgba(0, 243, 255, 0.3);
+  border-radius: 24px;
+  padding: 2rem;
+  max-width: 560px;
+  color: var(--color-text);
+  line-height: 1.6;
+}

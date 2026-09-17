@@ -1,0 +1,15 @@
+.parallax-image-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  /* Ensure children can rotate in 3d */
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+
+.parallax-image-container img {
+  will-change: transform;
+}

@@ -1,0 +1,220 @@
+.hero {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background: var(--color-bg, #030014);
+  overflow: hidden;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+.hero-bg-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  z-index: 1;
+  filter: brightness(0.75);
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(3, 0, 20, 0.55) 0%,
+    rgba(3, 0, 20, 0.45) 50%,
+    rgba(3, 0, 20, 0.92) 100%
+  );
+  z-index: 2;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 20vh;
+  background: linear-gradient(to bottom, transparent, var(--color-bg));
+  z-index: 20;
+  pointer-events: none;
+}
+
+.hero-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 5%;
+  position: relative;
+  z-index: 10;
+  gap: 2rem;
+}
+
+.hero-text {
+  flex: 1; /* Increased text space slightly */
+  text-align: left;
+  opacity: 0;
+  transform: translateX(-80px);
+  transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.hero-image {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  opacity: 0;
+  transform: translateX(-120px);
+  transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+  transition-delay: 0.15s; /* Staggered premium entrance */
+}
+
+/* Scroll-triggered active state styles */
+.hero.animate-in .hero-text {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.hero.animate-in .hero-image {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* New frame for sizing and zoom control */
+.hero-img-frame {
+  width: 450px; /* Smaller component size */
+  height: 550px;
+  overflow: hidden;
+  border-radius: 40px;
+  border: 3px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 40px rgba(0, 243, 255, 0.15);
+  position: relative;
+}
+
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.2); /* Zoom effect */
+  filter: brightness(0.85);
+  display: block;
+}
+
+/* Hover effect removed as requested */
+
+.hero-title {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  margin-bottom: 1rem;
+  color: #fff;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.hero-subtitle {
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  color: var(--color-text-muted);
+  margin-bottom: 2.5rem;
+  font-weight: 300;
+}
+
+/* Scroll Arrow Indicator */
+.scroll-arrow {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+  z-index: 50;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1.2s ease;
+}
+
+.scroll-arrow.visible {
+  opacity: 0.6; /* Softer opacity */
+  pointer-events: auto;
+}
+
+.arrow-icon {
+  width: 15px; /* Much smaller */
+  height: 15px; /* Much smaller */
+  border-bottom: 2px solid var(--color-text-muted); /* Match subtitle color */
+  border-right: 2px solid var(--color-text-muted);
+  transform: rotate(45deg); 
+  animation: bounceSoft 2.5s ease-in-out infinite;
+}
+
+@keyframes bounceSoft {
+  0%, 100% {
+    transform: rotate(45deg) translate(0, 0);
+  }
+  50% {
+    transform: rotate(45deg) translate(-4px, -4px); /* Moves along the 45deg axis */
+  }
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  .hero-container {
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    padding-top: 100px;
+    height: auto;
+    min-height: 100vh;
+    gap: 1.5rem;
+  }
+
+  .hero-text {
+    text-align: center;
+    padding-bottom: 2rem;
+    flex: 0 1 auto;
+  }
+
+  .hero-image {
+    align-self: center;
+    justify-content: center;
+    flex: 0 1 auto;
+    width: 100%;
+    margin-bottom: 40px;
+  }
+
+  .hero-img-frame {
+    width: 300px;
+    height: 380px;
+    border-radius: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-container {
+    padding-top: 80px;
+    gap: 1rem;
+  }
+
+  .hero-text {
+    padding-bottom: 1rem;
+  }
+
+  .hero-img-frame {
+    width: 220px;
+    height: 290px;
+    border-radius: 20px;
+  }
+
+  .hero-subtitle {
+    margin-bottom: 1.5rem;
+  }
+}

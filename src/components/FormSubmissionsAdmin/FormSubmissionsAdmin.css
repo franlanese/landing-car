@@ -1,0 +1,66 @@
+.forms-admin-table-wrapper {
+  border: 1px solid rgba(0, 243, 255, 0.15);
+  border-radius: 16px;
+}
+
+.forms-admin-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.forms-admin-table th {
+  text-align: left;
+  padding: 0.9rem 1rem;
+  color: var(--color-text-muted);
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(0, 243, 255, 0.15);
+}
+
+.forms-admin-row {
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.forms-admin-row td {
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid rgba(0, 243, 255, 0.08);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.forms-admin-row:hover,
+.forms-admin-row.active {
+  background: rgba(0, 243, 255, 0.06);
+}
+
+.forms-admin-detail-row td {
+  padding: 0;
+  border-bottom: 1px solid rgba(0, 243, 255, 0.08);
+}
+
+.forms-admin-detail {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.4rem 1.5rem;
+  padding: 1.25rem 1.5rem;
+  background: rgba(10, 10, 42, 0.5);
+}
+
+.forms-admin-detail dt {
+  color: var(--color-text-muted);
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.forms-admin-detail dd {
+  color: var(--color-text);
+  overflow-wrap: anywhere;
+  min-width: 0;
+}

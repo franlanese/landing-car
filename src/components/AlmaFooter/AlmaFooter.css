@@ -1,0 +1,176 @@
+.alma-footer {
+  width: 100%;
+  align-self: stretch;
+  background-color: rgba(3, 0, 20, 0.88);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  box-sizing: border-box;
+  padding: 3.5rem 2rem;
+}
+
+.alma-footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.alma-footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1 1 280px;
+  max-width: 420px;
+}
+
+.alma-footer-logo {
+  height: 56px;
+  width: auto;
+  flex-shrink: 0;
+}
+
+.alma-footer-brand h2 {
+  font-size: 1.3rem;
+  color: #fff;
+  letter-spacing: 2px;
+  margin: 0 0 0.4rem;
+}
+
+.alma-footer-brand p {
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.alma-footer-heading {
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0 0 1rem;
+  opacity: 0.8;
+}
+
+.alma-footer-links {
+  flex: 0 1 160px;
+}
+
+.alma-footer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.alma-footer-nav a {
+  color: var(--color-text);
+  font-size: 0.95rem;
+}
+
+.alma-footer-nav a:hover {
+  color: var(--color-accent);
+}
+
+.alma-footer-contact {
+  flex: 0 1 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.alma-footer-email {
+  color: var(--color-text);
+  font-size: 0.95rem;
+  margin-bottom: 1.2rem;
+}
+
+.alma-footer-email:hover {
+  color: var(--color-accent);
+}
+
+.alma-footer-social {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.alma-footer-social-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 38px;
+  height: 38px;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.alma-footer-social-btn img {
+  width: 100%;
+  height: 100%;
+  filter: brightness(0) invert(1);
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.alma-footer-social-btn:hover {
+  transform: translateY(-3px);
+}
+
+.alma-footer-social-btn:hover img {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .alma-footer {
+    padding: 1.75rem 1.5rem;
+  }
+
+  .alma-footer-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.25rem;
+  }
+
+  .alma-footer-brand,
+  .alma-footer-links,
+  .alma-footer-contact {
+    flex: none;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .alma-footer-brand {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+
+  .alma-footer-logo {
+    height: 40px;
+  }
+
+  .alma-footer-brand p {
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  .alma-footer-heading {
+    margin-bottom: 0.6rem;
+  }
+
+  .alma-footer-nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.4rem 1.1rem;
+  }
+
+  .alma-footer-contact {
+    align-items: center;
+  }
+
+  .alma-footer-email {
+    margin-bottom: 0.7rem;
+  }
+}

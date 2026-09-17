@@ -1,0 +1,120 @@
+.admin-crud-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.admin-crud-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.admin-crud-title {
+  font-size: 1.3rem;
+  color: var(--color-text);
+}
+
+.admin-crud-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  background: rgba(10, 10, 42, 0.45);
+  border: 1px solid rgba(0, 243, 255, 0.15);
+  border-radius: 16px;
+  padding: 1.5rem;
+}
+
+.admin-crud-form-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.admin-crud-image-preview {
+  margin-top: 0.75rem;
+  width: 120px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+}
+
+.admin-crud-empty {
+  color: var(--color-text-muted);
+}
+
+.admin-crud-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.admin-crud-list-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: rgba(10, 10, 42, 0.35);
+  border: 1px solid rgba(0, 243, 255, 0.1);
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+}
+
+.admin-crud-thumb {
+  width: 64px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.admin-crud-item-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.admin-crud-item-title {
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.admin-crud-badge {
+  display: inline-block;
+  margin-left: 0.6rem;
+  padding: 0.15rem 0.6rem;
+  border-radius: 50px;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  color: var(--color-text-muted);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+
+.admin-crud-item-date {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.admin-crud-item-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+@media (max-width: 640px) {
+  .admin-crud-list-item {
+    flex-wrap: wrap;
+  }
+
+  .admin-crud-item-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}

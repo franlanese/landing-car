@@ -1,0 +1,56 @@
+.admin-dashboard {
+  padding: 2rem clamp(1rem, 5vw, 3rem) 4rem;
+}
+
+.admin-dashboard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.admin-dashboard-title {
+  font-size: 1.6rem;
+  color: var(--color-accent);
+}
+
+.admin-dashboard-subtitle {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin-top: 0.25rem;
+}
+
+.admin-dashboard-tabs {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid rgba(0, 243, 255, 0.15);
+  flex-wrap: wrap;
+}
+
+.admin-dashboard-tab {
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 0.75rem 1rem;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.admin-dashboard-tab:hover {
+  color: var(--color-text);
+}
+
+.admin-dashboard-tab.active {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
+}
+
+.admin-dashboard-content {
+  max-width: 900px;
+}

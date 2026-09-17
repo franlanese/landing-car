@@ -1,0 +1,208 @@
+/* Scroll-triggered fade-in for each slide container */
+.slide {
+  width: 100%;
+  position: relative;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  opacity: 0;
+  transition: opacity 0.8s ease-out;
+}
+
+.slide.slide-visible {
+  opacity: 1;
+}
+
+.slide-hero {
+  height: 100vh;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+/* Fade superior: suaviza la entrada desde la sección anterior */
+.slide-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 28vh;
+  background: linear-gradient(to bottom, var(--color-bg) 0%, rgba(3, 0, 20, 0.6) 40%, transparent 100%);
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* Fade inferior: suaviza la salida hacia la sección siguiente */
+.slide-hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 28vh;
+  background: linear-gradient(to top, var(--color-bg) 0%, rgba(3, 0, 20, 0.6) 40%, transparent 100%);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.slide-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right,
+      rgba(3, 0, 20, 0.95) 0%,
+      rgba(3, 0, 20, 0.7) 50%,
+      rgba(3, 0, 20, 0.3) 100%);
+  display: flex;
+  align-items: center;
+  padding: 0 10%;
+}
+
+.slide-inner-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  gap: 2rem;
+  margin: 0 auto;
+}
+
+.slide-content {
+  flex: 1;
+  max-width: 600px;
+  opacity: 0;
+  transform: translateX(-80px);
+  transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.slide.slide-visible .slide-content {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.slide-side-image-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  opacity: 0;
+  transform: translateX(80px);
+  transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+  transition-delay: 0.15s;
+}
+
+.slide.slide-visible .slide-side-image-wrapper {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.slide-side-image {
+  max-width: 100%;
+  height: auto;
+  max-height: 70vh;
+  object-fit: contain;
+  filter: drop-shadow(0 0 20px rgba(0, 243, 255, 0.3)) drop-shadow(0 15px 40px rgba(0, 0, 0, 0.7));
+}
+
+.slide-side-link {
+  display: block;
+  cursor: pointer;
+  text-decoration: none;
+  width: 100%;
+}
+
+.slide-number {
+  color: var(--color-accent);
+  font-size: 1.5rem;
+  vertical-align: middle;
+  opacity: 0.8;
+  margin-right: 0.5rem;
+}
+
+.slide-title {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  color: #fff;
+  margin-bottom: 1.5rem;
+}
+
+.slide-description {
+  font-size: 1.1rem;
+  color: var(--color-text-muted);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.slide-button {
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+}
+
+.slide-button:hover {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-bg);
+}
+
+@media (max-width: 768px) {
+  .slide-hero::before,
+  .slide-hero::after {
+    height: 14vh;
+  }
+
+  .slide-overlay {
+    padding: 0 6%;
+  }
+
+  .slide-inner-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .slide-content {
+    max-width: 100%;
+  }
+
+  .slide-description {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .slide-side-image-wrapper {
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
+
+  .slide-side-image {
+    max-height: 26vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .slide-overlay {
+    padding: 0 5%;
+  }
+
+  .slide-title {
+    font-size: clamp(1.4rem, 5.5vw, 2rem);
+    margin-bottom: 0.75rem;
+  }
+
+  .slide-description {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  .slide-side-image {
+    max-height: 22vh;
+  }
+}
