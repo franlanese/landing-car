@@ -2,9 +2,9 @@
   position: relative;
   width: 100%;
   align-self: stretch;
-  background-color: rgba(10, 10, 42, 0.85);
+  background-color: #09121f;
   padding: 1.75rem 2rem 1.75rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.05); /* Slight separation line */
+  border-top: 1px solid rgba(255, 255, 255, 0.06); /* Slight separation line */
   scroll-snap-align: start;
   box-sizing: border-box;
 }
@@ -41,17 +41,15 @@
 }
 
 .footer-branding:hover .footer-logo {
-  filter: drop-shadow(0 0 8px rgba(0, 243, 255, 0.4));
+  filter: drop-shadow(0 0 8px rgba(var(--color-accent-rgb), 0.35));
 }
 
 .footer-branding:hover h2 {
   color: var(--color-accent);
-  text-shadow: 0 0 10px rgba(0, 243, 255, 0.2);
 }
 
 .footer-branding h2 {
   font-size: 1.15rem;
-  color: #fff;
   margin: 0;
   transition: all 0.3s ease;
 }

@@ -1,12 +1,17 @@
-# Landing Template
+# Maqueta · Concesionaria de usados
 
-Plantilla base de Zonodev para armar landing pages rápido. Es un fork de una
-landing real (React + TypeScript + Vite) al que se le sacó toda la marca y
-todo el backend, para poder arrancar un proyecto nuevo desde acá.
+Maqueta de Zonodev para presentar a concesionarias de autos usados. Está
+armada sobre la plantilla base de landing pages (React + TypeScript + Vite):
+secciones de **Usados destacados**, **Motos** y **Utilitarios**, un llamado
+a "ver todo el stock" que lleva a `/stock` (catálogo completo con filtros por
+categoría y orden por precio/kilómetros), ficha de cada unidad con formulario
+de consulta, grilla de **marcas con las que se trabaja** y panel admin demo.
+La concesionaria es genérica ("Tu Concesionaria") para poder adaptarla a
+cada cliente.
 
 No tiene backend: no hay Supabase, ni ninguna otra base de datos. Todo el
-contenido (cursos/eventos/noticias, sponsors, redes sociales, envíos de
-formularios de ejemplo) vive como datos estáticos en `src/data/`. Los hooks
+contenido (unidades, marcas, redes sociales, consultas de ejemplo) vive
+como datos estáticos en `src/data/`. Los hooks
 en `src/hooks/` (`useSupabaseTable`, `useSupabaseItem`, `useSponsors`,
 `useSocialLinks`, `useFormSubmissions`) leen esos arrays y, en el caso del
 admin, mutan un `useState` en memoria — cualquier alta/edición/baja que
@@ -26,21 +31,35 @@ npm run preview   # sirve el build de producción localmente
 ## Cómo personalizarla para un cliente nuevo
 
 - **Colores**: todos los tokens de tema (`--color-bg`, `--color-accent`,
-  `--font-heading`, etc.) están definidos una sola vez en `src/index.css`.
-  Cambiá los valores ahí y se propagan a todo el sitio.
-- **Textos e imágenes**: buscá "Tu Marca" y "tu-dominio.com" en el código
-  (`index.html`, `src/components/Seo/Seo.tsx`, `GlobalHeader`, `AlmaFooter`,
-  `Home.tsx`, `Hero.tsx`, `SlidesSection.tsx`) y reemplazalos por el nombre y
-  dominio reales del cliente.
-- **Imágenes placeholder**: todo lo que hoy apunta a
-  `/images/placeholder/*.svg` (hero, logo, tarjetas de contenido, sponsors,
-  imágenes de la sección "Historia") es un SVG gris genérico hecho a mano.
-  Reemplazá esos archivos en `public/images/placeholder/` (o cambiá las
-  rutas en el código) por las imágenes reales del proyecto.
-- **Contenido**: editá `src/data/content.ts`, `src/data/sponsors.ts`,
-  `src/data/socialLinks.ts` y `src/data/formSubmissions.ts` para cargar los
-  datos reales, o conectá los hooks a un backend real si el proyecto lo
-  necesita.
+  `--font-heading`, etc.) están definidos una sola vez en `src/index.css`
+  (tema claro: azul como color de marca y naranja para los botones de
+  venta). Los colores con transparencia usan el token `-rgb` que está al
+  lado (`--color-accent-rgb`, etc.): si cambiás un color, cambiá los dos y
+  se propaga a todo el sitio.
+- **Textos**: buscá "Tu Concesionaria", "tuconcesionaria.com.ar",
+  "Av. Ejemplo" y "tu-dominio.com" en el código (`index.html`,
+  `src/components/Seo/Seo.tsx`, `GlobalHeader`, `AlmaFooter`, `Home.tsx`,
+  `Hero.tsx`, `SlidesSection.tsx`) y reemplazalos por los datos reales.
+- **Imágenes**: todas las imágenes son placeholders grises que indican
+  qué archivo son. Reemplazá cada archivo por el real **con el mismo
+  nombre** y no hace falta tocar código:
+  - `public/images/stock/usados/`, `motos/` y `utilitarios/`: una foto por
+    unidad, llamada como el `id` de la unidad en `src/data/content.ts`
+    (por ejemplo `stock/usados/toyota-corolla-2021.jpg`). Recomendado
+    1200 × 750 px.
+  - `public/images/marcas/`: logos de las marcas (`toyota.png`,
+    `volkswagen.png`, …). Sirven PNG con fondo transparente de cualquier
+    proporción.
+  - `public/images/sitio/`: `logo.png`, `portada.jpg` (fondo del inicio),
+    `tomamos-tu-usado.jpg` (banner vertical) e `historia-1/2/3.jpg`.
+
+  Si una imagen real tiene otra extensión (por ejemplo `.webp`), cambiá
+  también la ruta en el código.
+- **Stock y marcas**: editá `src/data/content.ts` (unidades: título, año,
+  km, precio en US$, fecha de publicación, vendido o no),
+  `src/data/sponsors.ts` (marcas), `src/data/socialLinks.ts` y
+  `src/data/formSubmissions.ts`, o conectá los hooks a un backend real si
+  el proyecto lo necesita.
 
 ## Sobre `/admin`
 

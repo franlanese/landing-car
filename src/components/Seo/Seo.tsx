@@ -6,19 +6,20 @@ import { useLocation } from 'react-router-dom';
 // first paint and JS-less crawlers (homepage values); this component upserts
 // the same tags in place — it never duplicates them — as the route changes.
 
-const SITE_NAME = 'Tu Marca';
+const SITE_NAME = 'Tu Concesionaria';
 const SITE_URL = 'https://tu-dominio.com';
-const DEFAULT_TITLE = 'Plantilla de landing page';
-const DEFAULT_DESCRIPTION = 'Descripción de ejemplo de tu marca o proyecto.';
+const DEFAULT_TITLE = 'Tu Concesionaria · Autos, motos y utilitarios usados';
+const DEFAULT_DESCRIPTION =
+  'Autos, motos y utilitarios usados, revisados y con gestoría incluida. Financiación en cuotas y tomamos tu usado como parte de pago.';
 const DESCRIPTION_MAX = 160;
 
 interface SeoProps {
-  /** Page name, prepended to the site name ("Cursos" → "Cursos · Tu Marca").
+  /** Page name, prepended to the site name ("Stock completo" → "Stock completo · Tu Concesionaria").
    *  Omit on the home page to use the full default title. */
   title?: string;
   /** Summary for the meta description and social cards; clamped to ~160 chars. */
   description?: string;
-  /** og:type — "article" for news articles, "website" everywhere else. */
+  /** og:type — "article" for the Historia page, "website" everywhere else. */
   type?: 'website' | 'article';
   /** Keep the page out of search results (admin screens). */
   noindex?: boolean;

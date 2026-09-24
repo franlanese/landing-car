@@ -8,16 +8,15 @@
   display: flex;
   align-items: center;
   padding: 0 40px;
-  background: linear-gradient(to bottom, rgba(3, 0, 20, 1) 0%, rgba(3, 0, 20, 0.85) 40%, rgba(3, 0, 20, 0) 100%);
+  background: rgba(var(--color-surface-rgb), 0.97);
+  border-bottom: 1px solid var(--color-border);
   transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .navbar.scrolled {
   height: 65px;
-  background: linear-gradient(90deg, rgba(3, 0, 20, 0.98) 0%, rgba(30, 10, 60, 0.95) 50%, rgba(3, 0, 20, 0.98) 100%);
   backdrop-filter: blur(20px);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.9);
-  border-bottom: 1px solid rgba(0, 243, 255, 0.15);
+  box-shadow: var(--shadow-md);
 }
 
 .navbar-container {
@@ -32,7 +31,7 @@
 .navbar-home {
   background: none;
   border: none;
-  color: #fff;
+  color: var(--color-heading);
   font-family: var(--font-heading);
   font-size: 1.5rem;
   font-weight: 700;
@@ -52,6 +51,35 @@
   color: var(--color-accent);
 }
 
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.navbar-cta {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1.2rem;
+  border-radius: 50px;
+  border: 1px solid var(--color-highlight);
+  background: var(--color-highlight);
+  color: #fff;
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.navbar-cta:hover {
+  background: var(--color-highlight-hover);
+  border-color: var(--color-highlight-hover);
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(var(--color-highlight-rgb), 0.35);
+}
+
 .menu-toggle {
   display: flex;
   background: none;
@@ -66,7 +94,7 @@
   display: block;
   width: 30px;
   height: 2px;
-  background-color: #fff;
+  background-color: var(--color-heading);
   transition: all 0.3s ease;
 }
 
@@ -89,7 +117,7 @@
   left: 0;
   width: 100%;
   height: 100dvh;
-  background: rgba(3, 0, 20, 0.98);
+  background: rgba(var(--color-surface-rgb), 0.98);
   backdrop-filter: blur(15px);
   display: flex;
   flex-direction: column;
@@ -121,10 +149,12 @@
 
 .menu-brand {
   font-family: var(--font-heading);
-  font-size: clamp(1.6rem, 5vh, 2.5rem);
-  color: #fff;
+  /* Scales with the viewport width too, so a long dealer name never
+     overflows the menu on phones. */
+  font-size: min(clamp(1.6rem, 5vh, 2.5rem), 6.5vw);
+  color: var(--color-heading);
   text-transform: uppercase;
-  letter-spacing: 8px;
+  letter-spacing: min(8px, 1vw);
   margin-bottom: 15px;
 }
 
@@ -133,7 +163,6 @@
   height: 5px;
   background-color: var(--color-accent);
   margin: 0 auto;
-  box-shadow: 0 0 15px var(--color-accent-glow);
 }
 
 .menu-links {
@@ -161,9 +190,10 @@
 .dropdown-menu.active .menu-links li:nth-child(4) { transition-delay: 0.7s; }
 .dropdown-menu.active .menu-links li:nth-child(5) { transition-delay: 0.8s; }
 .dropdown-menu.active .menu-links li:nth-child(6) { transition-delay: 0.9s; }
+.dropdown-menu.active .menu-links li:nth-child(7) { transition-delay: 1s; }
 
 .menu-links a {
-  color: #fff;
+  color: var(--color-heading);
   font-family: var(--font-heading);
   font-size: clamp(1.3rem, 4.5vh, 2.2rem);
   font-weight: 600;
@@ -181,8 +211,7 @@
 }
 
 .highlight-link-mobile {
-  color: var(--color-accent) !important;
-  text-shadow: 0 0 10px var(--color-accent-glow);
+  color: var(--color-highlight) !important;
 }
 
 .menu-social {
@@ -216,15 +245,13 @@
 .social-icon-btn img {
   width: 100%;
   height: 100%;
-  filter: brightness(0) invert(1);
-  opacity: 0.8;
+  filter: brightness(0);
+  opacity: 0.7;
   transition: all 0.3s ease;
 }
 
 .social-icon-btn:hover {
-  background: rgba(0, 243, 255, 0.1);
   transform: translateY(-5px);
-  box-shadow: 0 0 20px var(--color-accent-glow);
 }
 
 .social-icon-btn:hover img {
@@ -249,7 +276,7 @@
 .menu-rocket svg {
   width: 100%;
   height: 100%;
-  filter: drop-shadow(0 0 10px var(--color-accent-glow));
+  opacity: 0.5;
 }
 
 .rocket-flame {
@@ -279,8 +306,19 @@
   .navbar {
     padding: 0 20px;
   }
+
+  .navbar-home {
+    font-size: 1.15rem;
+    letter-spacing: 1.5px;
+  }
   
   .menu-links a {
     font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .navbar-cta {
+    display: none;
   }
 }

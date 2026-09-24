@@ -8,33 +8,33 @@ export const SlidesSection: React.FC = () => {
   const slides = [
     {
       id: 1,
-      title: 'Nuestros orígenes',
-      description: 'Contá acá cómo empezó tu marca o proyecto: la idea original, el problema que quisiste resolver y los primeros pasos que dieron forma a lo que es hoy.',
-      imageUrl: '/images/placeholder/story-1.svg',
-      sideElement: <OverlappingImages imageFront="/images/placeholder/story-2.svg" imageBack="/images/placeholder/story-3.svg" />,
-      buttonText: 'Ver Entrevistas'
+      title: 'Más de 20 años en el rubro',
+      description: 'Empezamos como una agencia chica de barrio, vendiendo los autos de los vecinos. Hoy somos una concesionaria multimarca, pero seguimos trabajando igual: con la palabra y dando la cara por cada unidad que vendemos.',
+      imageUrl: '/images/sitio/historia-1.jpg',
+      sideElement: <OverlappingImages imageFront="/images/sitio/historia-2.jpg" imageBack="/images/sitio/historia-3.jpg" />,
+      buttonText: 'Conocé al equipo'
     },
     {
       id: 2,
-      title: 'Lo que hacemos hoy',
-      description: 'Describí acá el presente de tu marca o proyecto: en qué está trabajando, a quién ayuda y qué la hace distinta hoy en día.',
-      imageUrl: '/images/placeholder/story-2.svg',
-      sideImage: '/images/placeholder/story-2.svg',
+      title: 'Cada unidad, revisada',
+      description: 'Antes de publicar un vehículo lo pasamos por una revisión de más de 100 puntos: motor, tren delantero, frenos, chapa y documentación. Si no pasa la revisión, no sale a la venta.',
+      imageUrl: '/images/sitio/historia-2.jpg',
+      sideImage: '/images/sitio/historia-2.jpg',
       sideImageLink: '#',
-      buttonText: 'Ver sus últimas Publicaciones'
+      buttonText: 'Cómo revisamos'
     },
     {
       id: 3,
-      title: 'Hacia dónde vamos',
-      description: 'Contá acá la visión a futuro: las metas y los próximos pasos que tu marca o proyecto se propone alcanzar.',
-      imageUrl: '/images/placeholder/story-3.svg',
-      buttonText: 'Ver Mas',
+      title: 'Lo que viene',
+      description: 'Estamos ampliando el salón de ventas y sumando un taller propio de preparación, para entregarte cada unidad como nueva.',
+      imageUrl: '/images/sitio/historia-3.jpg',
+      buttonText: 'Seguinos',
       buttonLink: '#'
     }
   ];
 
   return (
-    <section id="slides-section" className="slides-container">
+    <section id="slides-section" className="slides-container theme-dark">
       {slides.map((slide) => (
         <Slide key={slide.id} {...slide} />
       ))}

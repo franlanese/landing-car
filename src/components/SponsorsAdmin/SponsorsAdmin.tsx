@@ -84,9 +84,9 @@ export const SponsorsAdmin: React.FC = () => {
   return (
     <div className="admin-crud-section">
       <div className="admin-crud-header">
-        <h2 className="admin-crud-title">Sponsors</h2>
+        <h2 className="admin-crud-title">Marcas</h2>
         {!isFormOpen && (
-          <button className="admin-btn" onClick={openCreateForm}>Agregar nuevo</button>
+          <button className="admin-btn" onClick={openCreateForm}>Agregar marca</button>
         )}
       </div>
 
@@ -120,7 +120,7 @@ export const SponsorsAdmin: React.FC = () => {
             <input
               id="sponsor-image"
               type="text"
-              placeholder="/images/placeholder/sponsor.svg"
+              placeholder="/images/marcas/toyota.png"
               className="admin-input"
               value={form.imageUrl}
               onChange={(e) => setForm((f) => ({ ...f, imageUrl: e.target.value }))}
@@ -146,7 +146,7 @@ export const SponsorsAdmin: React.FC = () => {
       {loading ? (
         <p className="admin-crud-empty">Cargando...</p>
       ) : items.length === 0 ? (
-        <p className="admin-crud-empty">Todavía no hay sponsors cargados.</p>
+        <p className="admin-crud-empty">Todavía no hay marcas cargadas.</p>
       ) : (
         <ul className="admin-crud-list">
           {items.map((item) => (

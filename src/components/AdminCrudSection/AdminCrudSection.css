@@ -20,10 +20,23 @@
   display: flex;
   flex-direction: column;
   gap: 1.1rem;
-  background: rgba(10, 10, 42, 0.45);
-  border: 1px solid rgba(0, 243, 255, 0.15);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
   border-radius: 16px;
   padding: 1.5rem;
+}
+
+.admin-crud-form-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+@media (max-width: 640px) {
+  .admin-crud-form-row {
+    grid-template-columns: 1fr;
+  }
 }
 
 .admin-crud-form-actions {
@@ -55,8 +68,8 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  background: rgba(10, 10, 42, 0.35);
-  border: 1px solid rgba(0, 243, 255, 0.1);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
   border-radius: 12px;
   padding: 0.75rem 1rem;
 }
@@ -88,7 +101,7 @@
   margin-left: 0.6rem;
   padding: 0.15rem 0.6rem;
   border-radius: 50px;
-  border: 1px solid rgba(148, 163, 184, 0.4);
+  border: 1px solid rgba(var(--color-text-muted-rgb), 0.4);
   color: var(--color-text-muted);
   font-size: 0.7rem;
   font-weight: 500;

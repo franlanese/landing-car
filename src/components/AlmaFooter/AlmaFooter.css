@@ -1,8 +1,7 @@
 .alma-footer {
   width: 100%;
   align-self: stretch;
-  background-color: rgba(3, 0, 20, 0.88);
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background-color: var(--color-dark);
   box-sizing: border-box;
   padding: 3.5rem 2rem;
 }
@@ -32,7 +31,6 @@
 
 .alma-footer-brand h2 {
   font-size: 1.3rem;
-  color: #fff;
   letter-spacing: 2px;
   margin: 0 0 0.4rem;
 }
@@ -88,6 +86,13 @@
 
 .alma-footer-email:hover {
   color: var(--color-accent);
+}
+
+.alma-footer-address {
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  margin: -0.4rem 0 1.2rem;
 }
 
 .alma-footer-social {
@@ -172,5 +177,9 @@
 
   .alma-footer-email {
     margin-bottom: 0.7rem;
+  }
+
+  .alma-footer-address {
+    margin: 0 0 0.7rem;
   }
 }

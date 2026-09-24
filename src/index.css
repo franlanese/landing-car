@@ -1,18 +1,61 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Inter:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap');
 
 :root {
   --font-heading: 'Poppins', sans-serif;
   --font-body: 'Inter', sans-serif;
 
-  --color-bg: #0f172a;
-  --color-bg-alt: #1e293b;
-  --color-text: #e2e8f0;
-  --color-text-muted: #94a3b8;
-  --color-accent: #3b82f6;
-  --color-accent-glow: rgba(59, 130, 246, 0.3);
-  --color-secondary: #8b5cf6;
+  /* Palette: light, "commercial" — white cards on a light gray page, navy
+     text, blue as the brand color and orange for the main sales CTAs.
+     Colors that are also used translucent have an `-rgb` triplet next to
+     them, used as rgba(var(--color-accent-rgb), 0.15) across every
+     component stylesheet — change both values together and the whole site
+     follows. */
+  --color-bg: #f4f6fa;
+  --color-bg-alt: #ffffff;
+  --color-surface: #ffffff;
+  --color-surface-rgb: 255, 255, 255;
+  --color-border: #e2e7ef;
+  --color-heading: #0f1d33;
+  --color-text: #2a3850;
+  --color-text-muted: #607089;
+  --color-text-muted-rgb: 96, 112, 137;
+  --color-accent: #1d5bd6;
+  --color-accent-rgb: 29, 91, 214;
+  --color-accent-glow: rgba(29, 91, 214, 0.25);
+  --color-secondary: #1646a8;
+  --color-secondary-rgb: 22, 70, 168;
+  --color-highlight: #e8590c;
+  --color-highlight-hover: #c94b07;
+  --color-highlight-rgb: 232, 89, 12;
+  --color-dark: #0e1a2e;
+  --color-dark-rgb: 14, 26, 46;
+  --color-danger: #d92d3a;
+  --color-danger-rgb: 217, 45, 58;
+
+  /* Brand gradient for the dark bands. Defined here so it resolves against
+     the root palette even inside .theme-dark (which lightens --color-accent). */
+  --gradient-brand: linear-gradient(135deg, var(--color-accent) 0%, var(--color-secondary) 100%);
+
+  --shadow-sm: 0 1px 2px rgba(14, 26, 46, 0.06), 0 2px 8px rgba(14, 26, 46, 0.04);
+  --shadow-md: 0 2px 4px rgba(14, 26, 46, 0.04), 0 12px 32px rgba(14, 26, 46, 0.08);
+  --shadow-lg: 0 4px 8px rgba(14, 26, 46, 0.06), 0 22px 48px rgba(14, 26, 46, 0.14);
 
   --nav-height: 80px;
+}
+
+/* Dark band (hero over a photo, promo banners, footer): re-points the text
+   tokens so everything inside reads light-on-dark without per-component
+   overrides. The element itself still sets its own dark background. */
+.theme-dark {
+  --color-heading: #ffffff;
+  --color-text: #dbe3ee;
+  --color-text-muted: #a3b2c7;
+  --color-text-muted-rgb: 163, 178, 199;
+  --color-border: rgba(255, 255, 255, 0.14);
+  --color-accent: #7fa8ff;
+  --color-accent-rgb: 127, 168, 255;
+  --color-accent-glow: rgba(127, 168, 255, 0.3);
+  color: var(--color-text);
 }
 
 * {
@@ -33,8 +76,6 @@ html.scroll-snap-active {
 body {
   font-family: var(--font-body);
   background-color: var(--color-bg);
-  background-image: linear-gradient(180deg, var(--color-bg), var(--color-bg-alt));
-  background-attachment: fixed;
   color: var(--color-text);
   overflow-x: hidden;
   line-height: 1.5;
@@ -44,17 +85,17 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   font-weight: 700;
   letter-spacing: -0.02em;
+  color: var(--color-heading);
 }
 
 a {
   color: inherit;
   text-decoration: none;
-  transition: color 0.3s ease, text-shadow 0.3s ease;
+  transition: color 0.3s ease;
 }
 
 a:hover {
   color: var(--color-accent);
-  text-shadow: 0 0 8px var(--color-accent-glow);
 }
 
 button {
@@ -62,17 +103,20 @@ button {
   font-family: var(--font-heading);
 }
 
-/* Shared pill CTA button used across cards, forms, and sponsor/hero CTAs.
+/* Shared pill CTA button used across cards, forms, and hero/section CTAs.
    Lives here (not scoped to one component) because it's used on pages that
-   don't render Hero, e.g. ContentList/ContentDetail. */
+   don't render Hero, e.g. Catalogo/ContentDetail. */
 .cta-button {
+  display: inline-block;
   background: transparent;
   color: var(--color-accent);
   border: 2px solid var(--color-accent);
-  padding: 1rem 2.5rem;
-  font-size: 1.1rem;
+  padding: 0.95rem 2.3rem;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 1.5px;
   border-radius: 50px;
   transition: all 0.3s ease;
   position: relative;
@@ -81,11 +125,27 @@ button {
 
 .cta-button:hover {
   background: var(--color-accent);
-  color: var(--color-bg);
-  box-shadow: 0 0 20px var(--color-accent-glow);
+  color: #fff;
+  box-shadow: 0 8px 24px var(--color-accent-glow);
 }
 
-.stars-bg {
+/* Solid orange variant for the main sales actions (ver stock, consultar). */
+.cta-button--highlight {
+  background: var(--color-highlight);
+  border-color: var(--color-highlight);
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(var(--color-highlight-rgb), 0.3);
+}
+
+.cta-button--highlight:hover {
+  background: var(--color-highlight-hover);
+  border-color: var(--color-highlight-hover);
+  box-shadow: 0 10px 28px rgba(var(--color-highlight-rgb), 0.4);
+}
+
+/* Ambient section background: faint grid plus a soft brand-colored light
+   spot. Sits behind section content (z-index 0). */
+.ambient-bg {
   position: absolute;
   top: 0;
   left: 0;
@@ -93,28 +153,26 @@ button {
   height: 100vh;
   z-index: 0;
   background-image:
-    radial-gradient(1px 1px at 20px 30px, var(--color-text-muted), rgba(0,0,0,0)),
-    radial-gradient(1px 1px at 40px 70px, var(--color-text-muted), rgba(0,0,0,0)),
-    radial-gradient(1px 1px at 50px 160px, var(--color-text-muted), rgba(0,0,0,0)),
-    radial-gradient(1px 1px at 90px 40px, var(--color-text-muted), rgba(0,0,0,0)),
-    radial-gradient(1px 1px at 130px 80px, var(--color-text-muted), rgba(0,0,0,0)),
-    radial-gradient(1px 1px at 160px 120px, var(--color-text-muted), rgba(0,0,0,0));
-  background-repeat: repeat;
-  background-size: 200px 200px;
-  animation: shine 4s infinite alternate;
-  opacity: 0.35;
+    radial-gradient(ellipse 50% 40% at 90% 5%, rgba(var(--color-accent-rgb), 0.07), transparent 70%),
+    linear-gradient(rgba(var(--color-dark-rgb), 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--color-dark-rgb), 0.03) 1px, transparent 1px);
+  background-size: 100% 100%, 56px 56px, 56px 56px;
   pointer-events: none;
-}
-
-@keyframes shine {
-  0% { opacity: 0.3; }
-  100% { opacity: 0.7; }
 }
 
 /* Full-page variant: fixed to the viewport instead of the nearest 100vh
    section, so it stays visible behind content that scrolls taller than one
    viewport (list/detail pages) instead of only covering the first screen. */
-.stars-bg--fixed {
+.ambient-bg--fixed {
   position: fixed;
   height: 100vh;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
 }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Hero.css';
 
 export const Hero: React.FC = () => {
@@ -58,26 +58,18 @@ export const Hero: React.FC = () => {
   };
 
   return (
-    <section className={`hero ${isVisible ? 'animate-in' : ''}`} ref={sectionRef}>
-      <img
-        src="/images/placeholder/hero.svg"
-        alt=""
-        className="hero-bg-image"
-        aria-hidden="true"
-      />
-      <div className="hero-overlay"></div>
-      <div className="stars-bg"></div>
+    <section className={`hero theme-dark ${isVisible ? 'animate-in' : ''}`} ref={sectionRef}>
       <div className="hero-container">
         <div className="hero-text">
-          <h1 className="hero-title">Un título de impacto para tu proyecto</h1>
-          <p className="hero-subtitle">Subtítulo de ejemplo que resume tu propuesta de valor.</p>
-          <button className="cta-button" onClick={scrollToSlides}>
-            Conocé más
-          </button>
+          <h1 className="hero-title">Tomamos tu usado</h1>
+          <p className="hero-subtitle">Lo cotizamos en el momento y lo tomamos como parte de pago. La diferencia, en cuotas fijas.</p>
+          <Link to="/#contacto" className="cta-button cta-button--highlight">
+            Cotizá tu usado
+          </Link>
         </div>
         <div className="hero-image">
           <div className="hero-img-frame">
-            <img src="/images/placeholder/story-1.svg" alt="Imagen de ejemplo" className="hero-img" />
+            <img src="/images/sitio/tomamos-tu-usado.jpg" alt="Tomamos tu usado como parte de pago" className="hero-img" />
           </div>
         </div>
       </div>

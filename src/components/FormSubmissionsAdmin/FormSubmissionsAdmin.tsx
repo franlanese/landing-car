@@ -21,7 +21,7 @@ export const FormSubmissionsAdmin: React.FC = () => {
   return (
     <div className="admin-crud-section">
       <div className="admin-crud-header">
-        <h2 className="admin-crud-title">Formularios</h2>
+        <h2 className="admin-crud-title">Consultas</h2>
       </div>
 
       {error && <p className="admin-error">Error al cargar datos: {error}</p>}
@@ -29,7 +29,7 @@ export const FormSubmissionsAdmin: React.FC = () => {
       {loading ? (
         <p className="admin-crud-empty">Cargando...</p>
       ) : submissions.length === 0 ? (
-        <p className="admin-crud-empty">Todavía no hay formularios completados.</p>
+        <p className="admin-crud-empty">Todavía no llegaron consultas.</p>
       ) : (
         <div className="forms-admin-table-wrapper">
           <table className="forms-admin-table">
@@ -61,6 +61,8 @@ export const FormSubmissionsAdmin: React.FC = () => {
                           <dd>{submission.firstName} {submission.lastName}</dd>
                           <dt>Email</dt>
                           <dd>{submission.email}</dd>
+                          <dt>Teléfono</dt>
+                          <dd>{submission.phone || '—'}</dd>
                           <dt>{submission.detailLabel}</dt>
                           <dd>{submission.detailValue}</dd>
                           <dt>Mensaje</dt>

@@ -1,0 +1,113 @@
+.inquiry-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  box-shadow: var(--shadow-md);
+  padding: 2rem;
+  max-width: 560px;
+}
+
+.inquiry-form-title {
+  font-size: 1.4rem;
+}
+
+.inquiry-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+@media (max-width: 480px) {
+  .inquiry-form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.inquiry-label {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.05em;
+}
+
+.inquiry-input,
+.inquiry-textarea {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  color: var(--color-heading);
+  font-family: var(--font-body);
+  font-size: 1rem;
+}
+
+.inquiry-input:focus,
+.inquiry-textarea:focus {
+  outline: none;
+  background: var(--color-surface);
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(var(--color-accent-rgb), 0.15);
+}
+
+.inquiry-input::placeholder,
+.inquiry-textarea::placeholder {
+  color: var(--color-text-muted);
+  opacity: 0.6;
+}
+
+.inquiry-input:disabled {
+  color: var(--color-text-muted);
+  cursor: not-allowed;
+}
+
+.inquiry-textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+.inquiry-error {
+  color: var(--color-danger);
+  font-size: 0.9rem;
+}
+
+.inquiry-submit {
+  background: var(--color-highlight);
+  color: #fff;
+  border: 2px solid var(--color-highlight);
+  font-weight: 600;
+  padding: 0.9rem 2rem;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  font-family: var(--font-heading);
+  align-self: flex-start;
+}
+
+.inquiry-submit:hover:not(:disabled) {
+  background: var(--color-highlight-hover);
+  border-color: var(--color-highlight-hover);
+  box-shadow: 0 8px 22px rgba(var(--color-highlight-rgb), 0.35);
+}
+
+.inquiry-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.inquiry-success {
+  background: var(--color-surface);
+  border: 1px solid rgba(var(--color-accent-rgb), 0.35);
+  border-radius: 20px;
+  box-shadow: var(--shadow-md);
+  padding: 2rem;
+  max-width: 560px;
+  color: var(--color-text);
+  line-height: 1.6;
+}

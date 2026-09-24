@@ -40,30 +40,36 @@ export const GlobalHeader: React.FC = () => {
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="navbar-container">
         <Link to="/" className="navbar-home" onClick={closeMenu}>
-          Tu Marca
+          Tu Concesionaria
         </Link>
 
+        <div className="navbar-actions">
+          <Link to="/stock" className="navbar-cta" onClick={closeMenu}>
+            Ver stock
+          </Link>
 
-        {/* Mobile Menu Toggle */}
-        <button className={`menu-toggle ${isMenuOpen ? 'open' : ''}`} onClick={toggleMenu} aria-label="Toggle Menu">
-          <span className="bar"></span>
-          <span className="bar"></span>
-          <span className="bar"></span>
-        </button>
+          {/* Mobile Menu Toggle */}
+          <button className={`menu-toggle ${isMenuOpen ? 'open' : ''}`} onClick={toggleMenu} aria-label="Toggle Menu">
+            <span className="bar"></span>
+            <span className="bar"></span>
+            <span className="bar"></span>
+          </button>
+        </div>
       </div>
 
       {/* Mobile Dropdown Menu */}
       <div className={`dropdown-menu ${isMenuOpen ? 'active' : ''}`}>
         <div className="menu-header">
-          <h2 className="menu-brand">Tu Marca</h2>
+          <h2 className="menu-brand">Tu Concesionaria</h2>
           <div className="menu-divider"></div>
         </div>
 
         <ul className="menu-links">
           <li><Link to="/#nosotros" onClick={closeMenu}>NOSOTROS</Link></li>
-          <li><Link to="/#cursos" onClick={closeMenu}>CURSOS</Link></li>
-          <li><Link to="/#eventos" onClick={closeMenu}>EVENTOS</Link></li>
-          <li><Link to="/#noticias" onClick={closeMenu}>NOTICIAS</Link></li>
+          <li><Link to="/#usados" onClick={closeMenu}>USADOS</Link></li>
+          <li><Link to="/#motos" onClick={closeMenu}>MOTOS</Link></li>
+          <li><Link to="/#utilitarios" onClick={closeMenu}>UTILITARIOS</Link></li>
+          <li><Link to="/stock" className="highlight-link-mobile" onClick={closeMenu}>TODO EL STOCK</Link></li>
           <li><Link to="/historia" onClick={closeMenu}>HISTORIA</Link></li>
           <li><Link to="/#contacto" onClick={closeMenu}>CONTACTO</Link></li>
         </ul>
@@ -86,8 +92,13 @@ export const GlobalHeader: React.FC = () => {
         )}
 
         <div className="menu-rocket">
-          <svg viewBox="0 0 24 24" fill="currentColor">
-            <circle cx="12" cy="12" r="9" />
+          {/* Steering wheel */}
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="12" cy="12" r="10" />
+            <circle cx="12" cy="12" r="2.5" />
+            <path d="M12 14.5V22" />
+            <path d="M9.6 11.3 2.5 9.5" />
+            <path d="m14.4 11.3 7.1-1.8" />
           </svg>
         </div>
       </div>

@@ -8,13 +8,13 @@ export const AlmaFooter: React.FC = () => {
   const visibleSocialLinks = getVisibleSocialLinks(links);
 
   return (
-    <div className="alma-footer">
+    <div className="alma-footer theme-dark">
       <div className="alma-footer-content">
         <div className="alma-footer-brand">
-          <img src="/images/placeholder/logo.svg" alt="Logo de tu marca" className="alma-footer-logo" />
+          <img src="/images/sitio/logo.png" alt="Logo de la concesionaria" className="alma-footer-logo" />
           <div>
-            <h2>Tu Marca</h2>
-            <p>Tu Marca · Plantilla de landing page</p>
+            <h2>Tu Concesionaria</h2>
+            <p>Autos, motos y utilitarios usados · Financiación y permutas</p>
           </div>
         </div>
 
@@ -22,16 +22,22 @@ export const AlmaFooter: React.FC = () => {
           <p className="alma-footer-heading">Secciones</p>
           <nav className="alma-footer-nav">
             <Link to="/#nosotros">Nosotros</Link>
-            <Link to="/#cursos">Cursos</Link>
-            <Link to="/#eventos">Eventos</Link>
-            <Link to="/#noticias">Noticias</Link>
+            <Link to="/#usados">Usados</Link>
+            <Link to="/#motos">Motos</Link>
+            <Link to="/#utilitarios">Utilitarios</Link>
+            <Link to="/stock">Todo el stock</Link>
             <Link to="/#contacto">Contacto</Link>
           </nav>
         </div>
 
         <div className="alma-footer-contact">
           <p className="alma-footer-heading">Contacto</p>
-          <a href="mailto:contacto@tumarca.com" className="alma-footer-email">contacto@tumarca.com</a>
+          <a href="mailto:ventas@tuconcesionaria.com.ar" className="alma-footer-email">ventas@tuconcesionaria.com.ar</a>
+          <p className="alma-footer-address">
+            Av. Ejemplo 1234, Ciudad
+            <br />
+            Lunes a viernes 9 a 19 h · Sábados 9 a 13 h
+          </p>
           {visibleSocialLinks.length > 0 && (
             <div className="alma-footer-social">
               {visibleSocialLinks.map((social) => (

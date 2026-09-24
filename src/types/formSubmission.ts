@@ -1,10 +1,10 @@
-export type FormSubmissionSource = 'inscription' | 'contact';
+export type FormSubmissionSource = 'inquiry' | 'contact';
 
 export const CONTACT_REASON_LABELS: Record<string, string> = {
-  consulta: 'Consulta General',
-  curso: 'Inscripción a Cursos',
-  evento: 'Eventos',
-  alianza: 'Alianza / Patrocinio',
+  unidad: 'Consulta por una unidad',
+  financiacion: 'Financiación',
+  permuta: 'Vender o permutar mi usado',
+  otro: 'Otro',
 };
 
 export interface FormSubmission {
@@ -14,6 +14,7 @@ export interface FormSubmission {
   firstName: string;
   lastName: string;
   email: string;
+  phone: string | null;
   message: string | null;
   createdAt: string;
   detailLabel: string;

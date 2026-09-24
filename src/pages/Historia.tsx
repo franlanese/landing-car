@@ -19,7 +19,7 @@ export const Historia: React.FC = () => {
     <div className="historia-page">
       <Seo
         title="Nuestra Historia"
-        description="Conocé más sobre el camino y la visión de este proyecto de ejemplo."
+        description="Más de 20 años vendiendo autos, motos y utilitarios usados. Conocé cómo trabajamos y cómo revisamos cada unidad."
         type="article"
       />
       <GlobalHeader />

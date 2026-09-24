@@ -20,8 +20,8 @@
 
 .admin-btn:hover:not(:disabled) {
   background: var(--color-accent);
-  color: var(--color-bg);
-  box-shadow: 0 0 20px var(--color-accent-glow);
+  color: #fff;
+  box-shadow: 0 6px 18px var(--color-accent-glow);
 }
 
 .admin-btn:disabled {
@@ -31,34 +31,34 @@
 
 .admin-btn-secondary {
   color: var(--color-text-muted);
-  border-color: rgba(148, 163, 184, 0.4);
+  border-color: rgba(var(--color-text-muted-rgb), 0.4);
 }
 
 .admin-btn-secondary:hover:not(:disabled) {
-  background: rgba(148, 163, 184, 0.15);
+  background: rgba(var(--color-text-muted-rgb), 0.15);
   color: var(--color-text);
   box-shadow: none;
 }
 
 .admin-btn-danger {
-  color: #ff4d6d;
-  border-color: #ff4d6d;
+  color: var(--color-danger);
+  border-color: var(--color-danger);
 }
 
 .admin-btn-danger:hover:not(:disabled) {
-  background: #ff4d6d;
-  color: var(--color-bg);
-  box-shadow: 0 0 20px rgba(255, 77, 109, 0.35);
+  background: var(--color-danger);
+  color: #fff;
+  box-shadow: 0 0 20px rgba(var(--color-danger-rgb), 0.35);
 }
 
 .admin-input,
 .admin-textarea {
   width: 100%;
   padding: 0.85rem 1rem;
-  background: rgba(10, 10, 42, 0.6);
-  border: 1px solid rgba(0, 243, 255, 0.25);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
   border-radius: 10px;
-  color: var(--color-text);
+  color: var(--color-heading);
   font-family: var(--font-body);
   font-size: 1rem;
 }
@@ -67,7 +67,7 @@
 .admin-textarea:focus {
   outline: none;
   border-color: var(--color-accent);
-  box-shadow: 0 0 12px var(--color-accent-glow);
+  box-shadow: 0 0 0 3px rgba(var(--color-accent-rgb), 0.15);
 }
 
 .admin-textarea {
@@ -84,6 +84,6 @@
 }
 
 .admin-error {
-  color: #ff4d6d;
+  color: var(--color-danger);
   font-size: 0.9rem;
 }

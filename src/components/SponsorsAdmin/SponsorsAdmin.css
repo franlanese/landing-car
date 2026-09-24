@@ -1,5 +1,5 @@
 .sponsors-admin-thumb {
   object-fit: contain;
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--color-bg);
   padding: 4px;
 }

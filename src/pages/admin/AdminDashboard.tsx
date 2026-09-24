@@ -5,30 +5,26 @@ import { SocialLinksAdmin } from '../../components/SocialLinksAdmin/SocialLinksA
 import { SponsorsAdmin } from '../../components/SponsorsAdmin/SponsorsAdmin';
 import { FormSubmissionsAdmin } from '../../components/FormSubmissionsAdmin/FormSubmissionsAdmin';
 import { Seo } from '../../components/Seo/Seo';
-import { TABLE_LABELS, type TableName } from '../../types/content';
+import { TABLE_LABELS, TABLE_NAMES, type TableName } from '../../types/content';
 import './admin-shared.css';
 import './AdminDashboard.css';
 
 type DashboardTab = TableName | 'social' | 'sponsors' | 'forms';
 
 const TABS: { key: DashboardTab; label: string }[] = [
-  { key: 'courses', label: TABLE_LABELS.courses },
-  { key: 'events', label: TABLE_LABELS.events },
-  { key: 'news', label: TABLE_LABELS.news },
+  ...TABLE_NAMES.map((table) => ({ key: table, label: TABLE_LABELS[table] })),
+  { key: 'forms', label: 'Consultas' },
+  { key: 'sponsors', label: 'Marcas' },
   { key: 'social', label: 'Redes Sociales' },
-  { key: 'sponsors', label: 'Sponsors' },
-  { key: 'forms', label: 'Formularios' },
 ];
 
-const CONTENT_TABS: TableName[] = ['courses', 'events', 'news'];
-
 function isContentTab(tab: DashboardTab): tab is TableName {
-  return (CONTENT_TABS as DashboardTab[]).includes(tab);
+  return (TABLE_NAMES as DashboardTab[]).includes(tab);
 }
 
 export const AdminDashboard: React.FC = () => {
   const { signOut } = useAuth();
-  const [activeTab, setActiveTab] = useState<DashboardTab>('courses');
+  const [activeTab, setActiveTab] = useState<DashboardTab>('usados');
 
   return (
     <div className="admin-page admin-dashboard">

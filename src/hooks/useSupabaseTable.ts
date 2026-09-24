@@ -2,18 +2,9 @@ import { useCallback, useState } from 'react';
 import { INITIAL_CONTENT } from '../data/content';
 import type { ContentItem, TableName } from '../types/content';
 
-export interface ContentItemInput {
-  title: string;
-  description: string;
-  eventDate: string;
-  imageUrl: string | null;
-  isFinished: boolean;
-}
+export type ContentItemInput = Omit<ContentItem, 'id'>;
 
-function formatDateEs(isoDate: string): string {
-  const [year, month, day] = isoDate.split('-');
-  return `${day}/${month}/${year}`;
-}
+const byPublishedAt = (a: ContentItem, b: ContentItem) => a.publishedAt.localeCompare(b.publishedAt);
 
 // In-memory replacement for the old Supabase-backed hook. Each call owns its
 // own array (seeded from src/data/content.ts), so create/update/remove only
@@ -22,9 +13,7 @@ function formatDateEs(isoDate: string): string {
 // admin dashboard) don't see each other's edits. That's fine here: the goal
 // is a functional-feeling admin demo, not real shared state.
 export function useSupabaseTable(table: TableName) {
-  const [items, setItems] = useState<ContentItem[]>(() =>
-    [...INITIAL_CONTENT[table]].sort((a, b) => a.eventDate.localeCompare(b.eventDate)),
-  );
+  const [items, setItems] = useState<ContentItem[]>(() => [...INITIAL_CONTENT[table]].sort(byPublishedAt));
   const [loading] = useState(false);
   const [error] = useState<string | null>(null);
 
@@ -33,36 +22,12 @@ export function useSupabaseTable(table: TableName) {
   }, []);
 
   const create = useCallback(async (input: ContentItemInput) => {
-    const newItem: ContentItem = {
-      id: crypto.randomUUID(),
-      title: input.title,
-      description: input.description,
-      dateTime: formatDateEs(input.eventDate),
-      eventDate: input.eventDate,
-      imageUrl: input.imageUrl,
-      isFinished: input.isFinished,
-    };
-    setItems((prev) => [...prev, newItem].sort((a, b) => a.eventDate.localeCompare(b.eventDate)));
+    const newItem: ContentItem = { id: crypto.randomUUID(), ...input };
+    setItems((prev) => [...prev, newItem].sort(byPublishedAt));
   }, []);
 
   const update = useCallback(async (id: string, input: ContentItemInput) => {
-    setItems((prev) =>
-      prev
-        .map((item) =>
-          item.id === id
-            ? {
-                ...item,
-                title: input.title,
-                description: input.description,
-                dateTime: formatDateEs(input.eventDate),
-                eventDate: input.eventDate,
-                imageUrl: input.imageUrl,
-                isFinished: input.isFinished,
-              }
-            : item,
-        )
-        .sort((a, b) => a.eventDate.localeCompare(b.eventDate)),
-    );
+    setItems((prev) => prev.map((item) => (item.id === id ? { ...item, ...input } : item)).sort(byPublishedAt));
   }, []);
 
   const remove = useCallback(async (id: string) => {

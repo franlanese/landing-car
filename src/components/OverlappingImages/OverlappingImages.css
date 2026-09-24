@@ -42,7 +42,7 @@
   margin-left: 10%;
   margin-top: 20px;
   transform: rotate(4deg);
-  border-color: rgba(0, 243, 255, 0.3);
+  border-color: rgba(var(--color-accent-rgb), 0.3);
 }
 
 /* Hover interaction */
@@ -50,7 +50,7 @@
   z-index: 3;
   transform: translate(15%, 15%) rotate(0deg) scale(1.1);
   filter: brightness(1) blur(0);
-  box-shadow: 0 40px 80px rgba(0, 243, 255, 0.3);
+  box-shadow: 0 40px 80px rgba(var(--color-accent-rgb), 0.3);
   border-color: var(--color-accent);
 }
 

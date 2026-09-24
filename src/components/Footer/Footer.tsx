@@ -3,7 +3,7 @@ import './Footer.css';
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="footer">
+    <footer className="footer theme-dark">
       <div className="footer-content">
         <a href="https://zonodev.ar/es/" target="_blank" rel="noopener noreferrer" className="footer-branding">
           <div className="footer-logo-container">
