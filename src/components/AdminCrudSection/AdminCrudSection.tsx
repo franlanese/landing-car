@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSupabaseTable, type ContentItemInput } from '../../hooks/useSupabaseTable';
-import { formatDateEs, formatKm, formatPrice } from '../../lib/contentMapping';
+import { ARS_PER_USD, PESOS_THRESHOLD_USD, formatDateEs, formatKm, formatPrice } from '../../lib/contentMapping';
 import type { ContentItem, TableName } from '../../types/content';
 import '../../pages/admin/admin-shared.css';
 import './AdminCrudSection.css';
@@ -202,6 +202,11 @@ export const AdminCrudSection: React.FC<AdminCrudSectionProps> = ({ table, label
               />
             </div>
           </div>
+          <p className="admin-crud-hint">
+            Los precios menores a {formatPrice(PESOS_THRESHOLD_USD)} se muestran en pesos
+            (1 US$ = $ {ARS_PER_USD.toLocaleString('es-AR')}).
+            {form.price !== '' && ` Se va a ver como: ${formatPrice(Number(form.price))}.`}
+          </p>
           <div>
             <label className="admin-label" htmlFor="crud-date">Fecha de publicación</label>
             <input

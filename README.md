@@ -60,6 +60,10 @@ npm run preview   # sirve el build de producción localmente
   `src/data/sponsors.ts` (marcas), `src/data/socialLinks.ts` y
   `src/data/formSubmissions.ts`, o conectá los hooks a un backend real si
   el proyecto lo necesita.
+- **Precios en pesos**: los precios se cargan siempre en US$, pero las
+  unidades de menos de US$ 25.000 se muestran convertidas a pesos. La
+  cotización es `ARS_PER_USD` en `src/lib/contentMapping.ts`: actualizala
+  cuando cambie el dólar.
 
 ## Sobre `/admin`
 

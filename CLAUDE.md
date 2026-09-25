@@ -37,7 +37,11 @@ state management library either.
   `TABLE_ITEM_LABELS`. Built from snake_case `ContentRow` objects piped
   through `rowToItem` ([src/lib/contentMapping.ts](src/lib/contentMapping.ts)),
   which also holds the display formatters (`formatDateEs`, `formatKm`,
-  `formatPrice` → `US$ 22.900`).
+  `formatPrice`). Prices are always stored in US$ (so `/stock` sorting
+  works across currencies), but `formatPrice` shows units under
+  `PESOS_THRESHOLD_USD` (25.000) converted to pesos at `ARS_PER_USD`
+  (`$ 26.490.000`) and the rest in dollars (`US$ 31.500`) — update
+  `ARS_PER_USD` there when the exchange rate moves.
 - [sponsors.ts](src/data/sponsors.ts) — the car brands shown in "Marcas con
   las que trabajamos" (the data/hook/admin keep the old "sponsor" naming).
   [socialLinks.ts](src/data/socialLinks.ts),

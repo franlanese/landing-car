@@ -41,7 +41,7 @@ const usadosRows: ContentRow[] = [
       'Tope de gama con techo solar, tapizados de cuero y asistente de estacionamiento. Services al día.',
     published_at: '2026-08-18',
     image_url: photo('usados', 'chevrolet-cruze-2020'),
-    is_sold: true,
+    is_sold: false,
     year: 2020,
     km: 70000,
     price_usd: 18900,

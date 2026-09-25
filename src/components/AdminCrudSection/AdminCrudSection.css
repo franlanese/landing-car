@@ -53,6 +53,12 @@
   display: block;
 }
 
+.admin-crud-hint {
+  margin-top: -0.4rem;
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+}
+
 .admin-crud-empty {
   color: var(--color-text-muted);
 }
