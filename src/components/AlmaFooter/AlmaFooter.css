@@ -27,6 +27,7 @@
   height: 56px;
   width: auto;
   flex-shrink: 0;
+  border-radius: 50px;
 }
 
 .alma-footer-brand h2 {
@@ -93,6 +94,13 @@
   font-size: 0.85rem;
   line-height: 1.6;
   margin: -0.4rem 0 1.2rem;
+}
+
+.alma-footer-credits {
+  color: var(--color-text-muted);
+  font-size: 0.8rem;
+  text-decoration: underline;
+  margin: -0.6rem 0 1.2rem;
 }
 
 .alma-footer-social {

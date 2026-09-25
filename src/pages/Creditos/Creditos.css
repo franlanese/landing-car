@@ -1,0 +1,102 @@
+.creditos-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.creditos-page {
+  flex: 1;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: calc(var(--nav-height, 80px) + 50px) 24px 80px;
+}
+
+.creditos-header {
+  margin-bottom: 2rem;
+}
+
+.creditos-back {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+.creditos-header .section-title {
+  margin: 1rem 0 0.75rem;
+  text-align: left;
+}
+
+.creditos-header .section-title::after {
+  margin-left: 0;
+}
+
+.creditos-intro {
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+.creditos-intro a,
+.creditos-meta a {
+  color: var(--color-accent);
+}
+
+.creditos-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.creditos-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  box-shadow: var(--shadow-sm);
+}
+
+.creditos-thumb {
+  width: 88px;
+  height: 56px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+  background: var(--color-bg);
+}
+
+.creditos-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.creditos-unit {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  color: var(--color-heading);
+}
+
+.creditos-meta {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 480px) {
+  .creditos-page {
+    padding: calc(var(--nav-height, 80px) + 30px) 16px 60px;
+  }
+
+  .creditos-item {
+    align-items: flex-start;
+  }
+
+  .creditos-thumb {
+    width: 64px;
+    height: 44px;
+  }
+}

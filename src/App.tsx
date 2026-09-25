@@ -2,8 +2,10 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { Home } from './pages/Home';
 import { Historia } from './pages/Historia';
 import { Catalogo } from './pages/Catalogo/Catalogo';
+import { Creditos } from './pages/Creditos/Creditos';
 import { AuthProvider } from './context/AuthContext';
 import { ProtectedRoute } from './components/ProtectedRoute/ProtectedRoute';
+import { ScrollToTop } from './components/ScrollToTop/ScrollToTop';
 import { AdminLogin } from './pages/admin/AdminLogin';
 import { AdminDashboard } from './pages/admin/AdminDashboard';
 import { ContentDetail } from './pages/ContentDetail/ContentDetail';
@@ -12,12 +14,14 @@ import { TABLE_NAMES } from './types/content';
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <AuthProvider>
         <div className="app">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/stock" element={<Catalogo />} />
             <Route path="/historia" element={<Historia />} />
+            <Route path="/creditos" element={<Creditos />} />
             {TABLE_NAMES.flatMap((table) => [
               // Bare category URLs (/usados, /motos, /utilitarios) land on the
               // filtered stock page.

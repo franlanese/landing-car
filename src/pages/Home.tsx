@@ -9,6 +9,7 @@ import './Home.css';
 import { Hero } from '../components/Hero/Hero';
 import { VehicleCarousel } from '../components/VehicleCarousel/VehicleCarousel';
 import { CategoryIcon } from '../components/CategoryIcon/CategoryIcon';
+import { BrandLogo } from '../components/BrandLogo/BrandLogo';
 import { useSupabaseTable } from '../hooks/useSupabaseTable';
 import { useSponsors } from '../hooks/useSponsors';
 import { useInfiniteCarousel } from '../hooks/useInfiniteCarousel';
@@ -269,7 +270,7 @@ export const Home: React.FC = () => {
         {/* Cover image (swap public/images/sitio/portada.jpg, or use a video) */}
         <img
           className="home-hero-video"
-          src="/images/sitio/portada.jpg"
+          src="/images/sitio/portada.png"
           alt="Salón de ventas"
         />
         <div className="home-hero-video-overlay"></div>
@@ -431,10 +432,10 @@ export const Home: React.FC = () => {
                     <div className="sponsor-item" key={sponsor.id}>
                       {sponsor.url ? (
                         <a href={sponsor.url} target="_blank" rel="noopener noreferrer">
-                          <img src={sponsor.imageUrl ?? ''} alt={sponsor.name} className="sponsor-logo" />
+                          <BrandLogo src={sponsor.imageUrl ?? ''} alt={sponsor.name} className="sponsor-logo" />
                         </a>
                       ) : (
-                        <img src={sponsor.imageUrl ?? ''} alt={sponsor.name} className="sponsor-logo" />
+                        <BrandLogo src={sponsor.imageUrl ?? ''} alt={sponsor.name} className="sponsor-logo" />
                       )}
                     </div>
                   ))}

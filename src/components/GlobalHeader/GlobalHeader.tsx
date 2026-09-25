@@ -18,7 +18,8 @@ export const GlobalHeader: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Handle hash navigation
+  // Handle hash navigation (scroll-to-top on route changes lives in
+  // ScrollToTop, mounted once in App.tsx).
   useEffect(() => {
     if (location.hash) {
       const element = document.getElementById(location.hash.substring(1));
@@ -28,8 +29,6 @@ export const GlobalHeader: React.FC = () => {
           element.scrollIntoView({ behavior: 'smooth' });
         }, 100);
       }
-    } else {
-      window.scrollTo(0, 0);
     }
   }, [location]);
 

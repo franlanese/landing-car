@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { GlobalHeader } from '../../components/GlobalHeader/GlobalHeader';
 import { Footer } from '../../components/Footer/Footer';
@@ -28,10 +28,6 @@ export const ContentDetail: React.FC<ContentDetailProps> = ({ table }) => {
   const { id } = useParams<{ id: string }>();
   const { item, loading, error } = useSupabaseItem(table, id);
   const { items: sameCategory } = useSupabaseTable(table);
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
 
   const backLink = BACK_LINKS[table];
 

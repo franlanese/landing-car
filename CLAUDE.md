@@ -105,7 +105,8 @@ vehicle fields (año, km, precio) and toggles `isSold` ("Marcar vendido" /
 
 ### Routing (src/App.tsx)
 
-Public: `/`, `/historia`, `/stock` ([Catalogo](src/pages/Catalogo/Catalogo.tsx):
+Public: `/`, `/historia`, `/creditos` (photo attribution, linked from the
+footer), `/stock` ([Catalogo](src/pages/Catalogo/Catalogo.tsx):
 every unit from every category, filterable with `?tipo=usados|motos|utilitarios`
 and sortable with `?orden=precio-asc|precio-desc|km-asc`, sold units always
 last), and `/usados/:id`, `/motos/:id`, `/utilitarios/:id` (all render
@@ -176,8 +177,13 @@ example data is never empty, but the guard is kept in case a fork empties
 
 ### Images (placeholders meant to be replaced in place)
 
-Every image under `public/images/` except `Iconos50x50/` and `Zonodev/` is a
-gray placeholder that says which file it is. The intended workflow is to
+Every image under `public/images/` except `Iconos50x50/`, `Zonodev/` and
+`stock/` is a gray placeholder that says which file it is. The `stock/`
+photos are real example photos of each model from Wikimedia Commons, mostly
+CC BY-SA: their author/license live in
+[src/data/photoCredits.ts](src/data/photoCredits.ts) and are shown on
+`/creditos` — keep that list in sync (drop an entry when its photo is
+replaced by the dealer's own). The intended workflow is to
 **overwrite each file with the real one under the same name**, with no code
 changes:
 
@@ -185,8 +191,10 @@ changes:
   unit `id` from `src/data/content.ts` (built by its `photo(table, id)`
   helper). Adding a unit means adding its row there plus its photo here.
 - `marcas/<id>.png` — brand logos for the "Marcas" grid (ids from
-  `src/data/sponsors.ts`). Tiles fit any aspect ratio (`object-fit: contain`),
-  so transparent PNG logos work as-is.
+  `src/data/sponsors.ts`). Any size/aspect ratio works: they're rendered
+  through [BrandLogo](src/components/BrandLogo/BrandLogo.tsx), which trims
+  transparent/white margins baked into the file (canvas, once per URL), and
+  `.sponsor-logo` scales the result up or down to fill the tile.
 - `sitio/` — `portada.jpg` (home hero background, under a dark overlay),
   `logo.png` (home hero + footer), `tomamos-tu-usado.jpg` (portrait image in
   `<Hero>`), `historia-1/2/3.jpg` (Historia slides, used both as the

@@ -69,7 +69,7 @@ export const Hero: React.FC = () => {
         </div>
         <div className="hero-image">
           <div className="hero-img-frame">
-            <img src="/images/sitio/tomamos-tu-usado.jpg" alt="Tomamos tu usado como parte de pago" className="hero-img" />
+            <img src="/images/sitio/tomamos-tu-usado.png" alt="Tomamos tu usado como parte de pago" className="hero-img" />
           </div>
         </div>
       </div>

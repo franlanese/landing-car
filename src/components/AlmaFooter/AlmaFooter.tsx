@@ -38,6 +38,7 @@ export const AlmaFooter: React.FC = () => {
             <br />
             Lunes a viernes 9 a 19 h · Sábados 9 a 13 h
           </p>
+          <Link to="/creditos" className="alma-footer-credits">Créditos de fotos</Link>
           {visibleSocialLinks.length > 0 && (
             <div className="alma-footer-social">
               {visibleSocialLinks.map((social) => (

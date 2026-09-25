@@ -46,7 +46,10 @@ npm run preview   # sirve el build de producción localmente
   - `public/images/stock/usados/`, `motos/` y `utilitarios/`: una foto por
     unidad, llamada como el `id` de la unidad en `src/data/content.ts`
     (por ejemplo `stock/usados/toyota-corolla-2021.jpg`). Recomendado
-    1200 × 750 px.
+    1200 × 750 px. Hoy tienen fotos de ejemplo de Wikimedia Commons con
+    licencia libre; sus autores figuran en `/creditos`
+    (`src/data/photoCredits.ts`). Cuando reemplaces una por la foto real,
+    borrá su entrada de ese archivo.
   - `public/images/marcas/`: logos de las marcas (`toyota.png`,
     `volkswagen.png`, …). Sirven PNG con fondo transparente de cualquier
     proporción.
